@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tapCount = 0
+    @State private var tapCount = 0
+  @State private var name = ""
     var body: some View {
         NavigationStack {
-            Form {
                 Section {
-                    Text("Hello, world!")
+                  Form{
+                    TextField("Enter your name", text: $name)
+                    Text("Your name is \(name)")
+                  }
                 }
                 Section {
+                  Form{
                     Text("Hello, world!")
                     Text("Hello, world!")
+                  }
                 }
-            }
             .navigationTitle("SwiftUI")
             .navigationBarTitleDisplayMode(.inline)
         }
