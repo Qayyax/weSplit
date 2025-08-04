@@ -8,31 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var tapCount = 0
-  @State private var name = ""
-    var body: some View {
-        NavigationStack {
-                Section {
-                  Form{
-                    TextField("Enter your name", text: $name)
-                    Text("Your name is \(name)")
-                  }
-                }
-                Section {
-                  Form{
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                  }
-                }
-            .navigationTitle("SwiftUI")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        Button("Tap Count: \(tapCount)") {
-            self.tapCount += 1
-        }
+  var body: some View {
+    Form{
+      ForEach(0..<100) { number in
+        Text("Row \(number)")
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
