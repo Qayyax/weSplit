@@ -37,7 +37,7 @@ struct ContentView: View  {
     NavigationStack {
     Form {
       // Asks for the amount to enter and the number of people splitting
-      Section {
+      Section ("Enter your Amount"){
         TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
           .keyboardType(.decimalPad)
           .focused($amountIsFocused)
@@ -47,11 +47,6 @@ struct ContentView: View  {
           ForEach(2..<100) {
             Text("\($0) people")
           }
-        }
-        .pickerStyle(.navigationLink)
-      } header: {
-        HStack {
-          Text("Enter your Amount")
         }
       }
       
