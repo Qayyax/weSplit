@@ -14,7 +14,16 @@ struct ContentView: View  {
   
   let tipPercentages = [10, 15, 20, 25, 0]
   var body: some View {
-    Text("Hello, world!")
+    Form {
+      Section {
+        Text("Enter your amount")
+        TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+          .keyboardType(.decimalPad)
+      }
+      Section{
+        Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+      }
+    }
   }
 }
 
