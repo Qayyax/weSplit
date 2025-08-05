@@ -15,25 +15,31 @@ struct ContentView: View  {
   let tipPercentages = [10, 15, 20, 25, 0]
   var body: some View {
     NavigationStack {
-      Form {
-        Section {
-          Text("Enter your amount")
-          TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
-            .keyboardType(.decimalPad)
-          
-          // Picker for how many people would split the cheque
-          Picker("Number of People",  selection: $numberOfPeople  ) {
-            ForEach(2..<100) {
-              Text("\($0) people")
-            }
+    Form {
+      // Asks for the amount to enter and the number of people splitting
+      Section {
+        TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+          .keyboardType(.decimalPad)
+        
+        // Picker for how many people would split the cheque
+        Picker("Number of People",  selection: $numberOfPeople  ) {
+          ForEach(2..<100) {
+            Text("\($0) people")
           }
-          .pickerStyle(.navigationLink)
         }
-        Section{
-          Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+        .pickerStyle(.navigationLink)
+      } header: {
+        HStack {
+          Text("Enter your Amount")
         }
       }
       
+      // Shows the total amount
+      Section{
+        Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+      }
+    }
+    .navigationTitle("Tip splitting app")
     }
   }
 }
