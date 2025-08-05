@@ -13,6 +13,12 @@ struct ContentView: View  {
   @State private var tipPercentage = 20
   
   let tipPercentages = [10, 15, 20, 25, 0]
+  
+  var totalPerPerson: Double {
+    // calculate the total per person here
+    return 0
+  }
+  
   var body: some View {
     NavigationStack {
     Form {
@@ -44,16 +50,20 @@ struct ContentView: View  {
         .pickerStyle(.segmented)
       } header: {
         HStack {
-          Text("Tip Percentage")
+          Text("How much tip do you want to leave?")
         }
       }
       
       // Shows the total amount
       Section{
         Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+      } header: {
+        HStack{
+          Text("Total amount")
+        }
       }
     }
-    .navigationTitle("Tip splitting app")
+    .navigationTitle("Bill splitting app")
     }
   }
 }
