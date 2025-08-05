@@ -34,6 +34,20 @@ struct ContentView: View  {
         }
       }
       
+      // tip percentage section
+      Section {
+        Picker("Tip percentage", selection: $tipPercentage) {
+          ForEach(tipPercentages, id: \.self) {
+            Text($0, format: .percent)
+          }
+        }
+        .pickerStyle(.segmented)
+      } header: {
+        HStack {
+          Text("Tip Percentage")
+        }
+      }
+      
       // Shows the total amount
       Section{
         Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
