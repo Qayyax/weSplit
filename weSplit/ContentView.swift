@@ -62,6 +62,7 @@ struct ContentView: View  {
       // Total amount for the check
       Section ("Total amount"){
         Text(totalAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+          .foregroundStyle(tipPercentage == 0 ? Color.red : .primary)
       }
       
       // Shows the total amount
